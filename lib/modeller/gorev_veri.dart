@@ -22,4 +22,9 @@ class GorevVeri with ChangeNotifier {
     g.toggleYapildi();
     notifyListeners();
   }
+
+  void gorevSil(Gorev g) {
+    gorevListesi.remove(g);
+    notifyListeners();
+  }
 }

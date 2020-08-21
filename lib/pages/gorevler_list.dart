@@ -15,6 +15,14 @@ class GorevListesi extends StatelessWidget {
           checkboxCallBack: (bool val) {
             gorevVeri.gorevGuncelle(gorevVeri.gorevListesi[index]);
           },
+          listTileLongPress: () {
+            if (gorevVeri.gorevListesi[index].yapildi == true) {
+              gorevVeri.gorevSil(gorevVeri.gorevListesi[index]);
+            } else {
+              Scaffold.of(context).showSnackBar(
+                  SnackBar(content: Text("Önce Görevi Yapmalısınız")));
+            }
+          },
         ),
       );
     });
