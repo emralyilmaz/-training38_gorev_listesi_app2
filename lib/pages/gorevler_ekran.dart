@@ -22,14 +22,7 @@ class _GorevlerEkranState extends State<GorevlerEkran> {
           backgroundColor: Color.fromRGBO(81, 43, 82, 1),
           onPressed: () {
             showModalBottomSheet(
-                context: context,
-                builder: (context) => GorevEkle((yeniGorev) {
-                      // setState(() {
-                      //   // print(yeniGorev);
-                      //   gorevListesi.add(Gorev(gorevAd: yeniGorev));
-                      // });
-                      Navigator.pop(context);
-                    }));
+                context: context, builder: (context) => GorevEkle());
           }),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +51,7 @@ class _GorevlerEkranState extends State<GorevlerEkran> {
                 ),
                 SizedBox(height: 10.0),
                 Text(
-                  "${Provider.of<GorevVeri>(context).gorevListesi.length} Tane Görev Var.",
+                  "${Provider.of<GorevVeri>(context).gorevSayisi} Tane Görev Var.",
                   style: TextStyle(
                       fontSize: 20, color: Color.fromRGBO(81, 43, 82, 1)),
                 ),

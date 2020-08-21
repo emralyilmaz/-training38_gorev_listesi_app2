@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:training38_gorev_listesi_app2/modeller/gorev_veri.dart';
+import 'package:training38_gorev_listesi_app2/modeller/gorev.dart';
 
 class GorevEkle extends StatefulWidget {
-  final Function gorevEkle;
-  GorevEkle(this.gorevEkle);
   @override
   _GorevEkleState createState() => _GorevEkleState();
 }
@@ -42,8 +43,11 @@ class _GorevEkleState extends State<GorevEkle> {
             SizedBox(height: 40),
             FlatButton(
               onPressed: () {
-                widget.gorevEkle(yeniGorev);
+                // widget.gorevEkle(yeniGorev);
                 // print(yeniGorev);
+                Provider.of<GorevVeri>(context, listen: false)
+                    .gorevEkle(Gorev(gorevAd: yeniGorev));
+                Navigator.pop(context);
               },
               child: Text(
                 "Ekle",

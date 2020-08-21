@@ -8,13 +8,13 @@ class GorevListesi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<GorevVeri>(builder: (context, gorevVeri, child) {
       return ListView.builder(
-        itemCount: Provider.of<GorevVeri>(context).gorevSayisi,
+        itemCount: gorevVeri.gorevSayisi,
         itemBuilder: (context, index) => GorevTile(
-          gorevAd: Provider.of<GorevVeri>(context).gorevListesi[index].gorevAd,
-          secim: Provider.of<GorevVeri>(context).gorevListesi[index].yapildi,
+          gorevAd: gorevVeri.gorevListesi[index].gorevAd,
+          secim: gorevVeri.gorevListesi[index].yapildi,
           checkboxCallBack: (bool val) {
             // setState(() {
-            //   Provider.of<GorevVeri>(context).gorevListesi[index].toggleYapildi();
+            //   gorevVeri.gorevListesi[index].toggleYapildi();
             // });
           },
         ),
