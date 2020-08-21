@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:training38_gorev_listesi_app2/pages/gorevler_ekle.dart';
 import 'package:training38_gorev_listesi_app2/pages/gorevler_list.dart';
 
 class GorevlerEkran extends StatelessWidget {
@@ -12,7 +13,10 @@ class GorevlerEkran extends StatelessWidget {
             color: Color.fromRGBO(228, 245, 177, 1),
           ),
           backgroundColor: Color.fromRGBO(81, 43, 82, 1),
-          onPressed: () {}),
+          onPressed: () {
+            showModalBottomSheet(
+                context: context, builder: (context) => GorevEkle());
+          }),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
