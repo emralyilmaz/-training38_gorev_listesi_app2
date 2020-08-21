@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:training38_gorev_listesi_app2/pages/gorevler_ekle.dart';
 import 'package:training38_gorev_listesi_app2/pages/gorevler_list.dart';
-import 'package:training38_gorev_listesi_app2/modeller/gorev.dart';
+import 'package:training38_gorev_listesi_app2/modeller/gorev_veri.dart';
+import 'package:provider/provider.dart';
 
 class GorevlerEkran extends StatefulWidget {
   @override
@@ -9,11 +10,6 @@ class GorevlerEkran extends StatefulWidget {
 }
 
 class _GorevlerEkranState extends State<GorevlerEkran> {
-  List<Gorev> gorevListesi = [
-    Gorev(gorevAd: "Spor Yap.", yapildi: false),
-    Gorev(gorevAd: "Evi Temizle", yapildi: false),
-    Gorev(gorevAd: "Flutter Çalış", yapildi: false),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,10 +24,10 @@ class _GorevlerEkranState extends State<GorevlerEkran> {
             showModalBottomSheet(
                 context: context,
                 builder: (context) => GorevEkle((yeniGorev) {
-                      setState(() {
-                        // print(yeniGorev);
-                        gorevListesi.add(Gorev(gorevAd: yeniGorev));
-                      });
+                      // setState(() {
+                      //   // print(yeniGorev);
+                      //   gorevListesi.add(Gorev(gorevAd: yeniGorev));
+                      // });
                       Navigator.pop(context);
                     }));
           }),
@@ -62,7 +58,7 @@ class _GorevlerEkranState extends State<GorevlerEkran> {
                 ),
                 SizedBox(height: 10.0),
                 Text(
-                  "5 Tane Görev Var.",
+                  "${Provider.of<GorevVeri>(context).gorevListesi.length} Tane Görev Var.",
                   style: TextStyle(
                       fontSize: 20, color: Color.fromRGBO(81, 43, 82, 1)),
                 ),
@@ -77,7 +73,7 @@ class _GorevlerEkranState extends State<GorevlerEkran> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30))),
-              child: GorevListesi(gorevListesi: gorevListesi),
+              child: GorevListesi(),
             ),
           )
         ],
