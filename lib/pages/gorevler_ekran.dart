@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:training38_gorev_listesi_app2/pages/gorevler_list.dart';
 
 class GorevlerEkran extends StatelessWidget {
   @override
@@ -48,11 +49,13 @@ class GorevlerEkran extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 30),
               decoration: BoxDecoration(
                   color: Color.fromRGBO(123, 176, 168, 1),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30))),
+              child: GorevListesi(),
             ),
           )
         ],
