@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:training38_gorev_listesi_app2/pages/gorevler_ekle.dart';
 import 'package:training38_gorev_listesi_app2/pages/gorevler_list.dart';
+import 'package:training38_gorev_listesi_app2/modeller/gorev.dart';
 
-class GorevlerEkran extends StatelessWidget {
+class GorevlerEkran extends StatefulWidget {
+  @override
+  _GorevlerEkranState createState() => _GorevlerEkranState();
+}
+
+class _GorevlerEkranState extends State<GorevlerEkran> {
+  List<Gorev> gorevListesi = [
+    Gorev(gorevAd: "Spor Yap.", yapildi: false),
+    Gorev(gorevAd: "Evi Temizle", yapildi: false),
+    Gorev(gorevAd: "Flutter Çalış", yapildi: false),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +26,14 @@ class GorevlerEkran extends StatelessWidget {
           backgroundColor: Color.fromRGBO(81, 43, 82, 1),
           onPressed: () {
             showModalBottomSheet(
-                context: context, builder: (context) => GorevEkle());
+                context: context,
+                builder: (context) => GorevEkle((yeniGorev) {
+                      setState(() {
+                        // print(yeniGorev);
+                        gorevListesi.add(Gorev(gorevAd: yeniGorev));
+                      });
+                      Navigator.pop(context);
+                    }));
           }),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +77,7 @@ class GorevlerEkran extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30))),
-              child: GorevListesi(),
+              child: GorevListesi(gorevListesi: gorevListesi),
             ),
           )
         ],
